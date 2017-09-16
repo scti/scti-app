@@ -1,24 +1,54 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { CoursesPage } from '../courses/courses';
+import { LecturesPage } from '../lectures/lectures';
 
-/**
- * Generated class for the HomePage tabs.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
 
-  lecturesRoot = 'LecturesPage'
-  coursesRoot = 'CoursesPage'
+@Injectable()
+export class HomePage implements OnInit{
 
+  lecturesRoot = LecturesPage
+  coursesRoot = CoursesPage
 
-  constructor(public navCtrl: NavController) {}
+  public events: Object[];
 
+  constructor(
+    public navCtrl: NavController,
+    private _http: Http,
+    private _loadingCtrl: LoadingController,
+    private _alertCtrl: AlertController){}
+
+    
+  ngOnInit() {
+ /*
+    let  loader = this._loadingCtrl.create({
+        content: 'Carregando...'
+      });
+ 
+      loader.present();
+ 
+      this._http
+        .get('http://scti.herokuapp.com/api/workshops')
+        .map(res => res.json())
+        .toPromise()
+        .then(events => {
+        this.events = events
+        loader.dismiss();
+      })
+      .catch(
+       err => {
+        console.log(err);
+        loader.dismiss();
+ 
+        this._alertCtrl.create({title: "Falha de Conexão!",
+        buttons: [{text: "Estou ciente"}],
+        subTitle: "Não foi possível obter os dados requisitados. Tente novamente mais tarde!"}).present()
+      });*/
+  }
 }
