@@ -16,7 +16,7 @@ export class HomePage implements OnInit{
   lecturesRoot = LecturesPage
   coursesRoot = CoursesPage
 
-  public events: Object[];
+  public events;
 
   constructor(
     public navCtrl: NavController,
@@ -26,7 +26,7 @@ export class HomePage implements OnInit{
 
     
   ngOnInit() {
- /*
+ 
     let  loader = this._loadingCtrl.create({
         content: 'Carregando...'
       });
@@ -40,6 +40,7 @@ export class HomePage implements OnInit{
         .then(events => {
         this.events = events
         loader.dismiss();
+        console.log("Eventos: "+this.events.workshops[1].name);
       })
       .catch(
        err => {
@@ -49,6 +50,8 @@ export class HomePage implements OnInit{
         this._alertCtrl.create({title: "Falha de Conexão!",
         buttons: [{text: "Estou ciente"}],
         subTitle: "Não foi possível obter os dados requisitados. Tente novamente mais tarde!"}).present()
-      });*/
+      });
+
+
   }
 }

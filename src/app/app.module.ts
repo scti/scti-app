@@ -4,11 +4,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { UserService } from '../domain/user/user.service'
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CoursesPage } from "../pages/courses/courses";
 import { LecturesPage } from "../pages/lectures/lectures";
+import { LoginPage } from "../pages/login/login";
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -18,7 +20,8 @@ import 'rxjs/add/operator/toPromise';
     MyApp,
     HomePage,
     LecturesPage,
-    CoursesPage
+    CoursesPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -30,12 +33,14 @@ import 'rxjs/add/operator/toPromise';
     MyApp,
     HomePage,
     LecturesPage,
-    CoursesPage
+    CoursesPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService
   ]
 })
 export class AppModule {}
