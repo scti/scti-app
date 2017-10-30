@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { UserService } from '../../domain/user/user.service'
 import { CoursesPage } from '../courses/courses';
 import { LecturesPage } from '../lectures/lectures';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -16,13 +17,14 @@ export class HomePage implements OnInit{
   lecturesRoot = LecturesPage
   coursesRoot = CoursesPage
 
-  public events;
+  public workshops;
 
   constructor(
     public navCtrl: NavController,
-    private _http: Http,
+    private _service: UserService,
     private _loadingCtrl: LoadingController,
-    private _alertCtrl: AlertController){}
+    private _alertCtrl: AlertController,
+    private _storage: Storage){}
 
     
   ngOnInit() {
@@ -33,25 +35,14 @@ export class HomePage implements OnInit{
  
       loader.present();
  
-      this._http
-        .get('http://scti.herokuapp.com/api/workshops')
-        .map(res => res.json())
-        .toPromise()
-        .then(events => {
-        this.events = events
-        loader.dismiss();
-        console.log("Eventos: "+this.events.workshops[1].name);
+      this._storage.get('token').then((val) => {
+        this._service.listWorkshops(val)
+        .then(() =>{
+          this.workshops = this._service.getWorkshops()
+        }).then(() => {
+          loader.dismiss();
+        });
       })
-      .catch(
-       err => {
-        console.log(err);
-        loader.dismiss();
- 
-        this._alertCtrl.create({title: "Falha de Conexão!",
-        buttons: [{text: "Estou ciente"}],
-        subTitle: "Não foi possível obter os dados requisitados. Tente novamente mais tarde!"}).present()
-      });
-
 
   }
 }

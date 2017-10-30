@@ -4,14 +4,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { UserService } from '../domain/user/user.service'
 
+import { CoursesPage } from '../pages/courses/courses';
+import { LecturesPage } from '../pages/lectures/lectures';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { CoursesPage } from "../pages/courses/courses";
-import { LecturesPage } from "../pages/lectures/lectures";
-import { LoginPage } from "../pages/login/login";
-
+import { LoginPage } from '../pages/login/login';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -19,28 +19,32 @@ import 'rxjs/add/operator/toPromise';
   declarations: [
     MyApp,
     HomePage,
+    LoginPage,  
     LecturesPage,
-    CoursesPage,
-    LoginPage
+    CoursesPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom'}),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot({
+      name: '__sharedPreferences',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+  })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
+    LoginPage,
     LecturesPage,
-    CoursesPage,
-    LoginPage
+    CoursesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService
+    UserService,
   ]
 })
 export class AppModule {}
