@@ -1,20 +1,10 @@
 <ion-content padding class="card-background-page">
-    <ion-list>
-        
+    <ion-list *ngFor="let lecture of lectures">
         <ion-card>
-            <img src="https://seekcdn.com/skl/images/studying/body%20images/online_courses_explained.jpg"/>
-            <div class="event-title">Palestra</div>
-            <div class="event-weekday"> Terça-Feira </div>
-            <div class="event-schedule">14:00 - 16:00</div>
+            <img src="http://scti.herokuapp.com/imgs/img-card-uenf.png"/>
+            <div class="event-title">{{lecture.name}}</div>
+            <div class="event-schedule">{{lecture.schedule}}</div>
+            <div class="event-tutor">{{lecture.tutor}}</div>
         </ion-card>
-        
-        <ion-card>
-            <img src="https://seekcdn.com/skl/images/studying/body%20images/online_courses_explained.jpg"/>
-            <div class="event-title">Palestra</div>
-            <div class="event-weekday"> Terça-Feira </div>
-            <div class="event-schedule">14:00 - 16:00</div>
-        </ion-card>
-        
-        
     </ion-list>
-</ion-content>
+</ion-content>    

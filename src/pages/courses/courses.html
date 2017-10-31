@@ -1,11 +1,10 @@
 <ion-content padding class="card-background-page">
-    <ion-list>
+    <ion-list *ngFor="let workshop of workshops">
         <ion-card>
-            <img src="https://seekcdn.com/skl/images/studying/body%20images/online_courses_explained.jpg"/>
-            <div class="event-title">Mini curso</div>
-            <div class="event-subtitle">41 Vagas</div>
-            <div class="event-weekday"> Terça-Feira </div>
-            <div class="event-schedule">09:00 - 10:00</div>
+            <img src="http://scti.herokuapp.com/imgs/img-card-uenf.png"/>
+            <div class="event-title">{{workshop.name}}</div>
+            <div class="event-schedule">{{workshop.weekday}}: {{workshop.startsAt}} - {{workshop.endsAt}}</div>
+            <div class="event-tutor">{{workshop.vacancy}}</div>
         </ion-card>
     </ion-list>
 </ion-content>

@@ -40,8 +40,8 @@ export class UserService {
         .toPromise()
         .then(dado => {
             console.log(api);
-            console.log(dado);
-            this._workshops = dado;
+            console.log(dado.workshops);
+            this._workshops = dado.workshops;
         })
     }
 
