@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { UserService } from '../domain/user/user.service'
-
+import { CourseDetailPage } from "../pages/course-detail/course-detail";
 import { CoursesPage } from '../pages/courses/courses';
 import { LecturesPage } from '../pages/lectures/lectures';
 import { MyApp } from './app.component';
@@ -21,7 +21,8 @@ import 'rxjs/add/operator/toPromise';
     HomePage,
     LoginPage,  
     LecturesPage,
-    CoursesPage
+    CoursesPage,
+    CourseDetailPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,8 @@ import 'rxjs/add/operator/toPromise';
     HomePage,
     LoginPage,
     LecturesPage,
-    CoursesPage
+    CoursesPage,
+    CourseDetailPage
   ],
   providers: [
     StatusBar,

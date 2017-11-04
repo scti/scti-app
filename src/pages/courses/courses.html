@@ -1,10 +1,9 @@
 <ion-content padding class="card-background-page">
-    <ion-list *ngFor="let workshop of workshops">
-        <ion-card>
+    <ion-list *ngFor="let workshop of workshops" no-lines>
+        <ion-card (click)="itemSelected(workshop)">
             <img src="http://scti.herokuapp.com/imgs/img-card-uenf.png"/>
             <div class="event-title">{{workshop.name}}</div>
-            <div class="event-schedule">{{workshop.weekday}}: {{workshop.startsAt}} - {{workshop.endsAt}}</div>
-            <div class="event-tutor">{{workshop.vacancy}}</div>
+            <div class="event-tutor">{{workshop.weekday}}: {{workshop.startsAt}} - {{workshop.endsAt}}</div>
         </ion-card>
     </ion-list>
 </ion-content>

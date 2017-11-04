@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { UserService } from '../../domain/user/user.service'
-import { LecturesPage } from '../lectures/lectures';
 import { Storage } from '@ionic/storage';
-
+import { LoginPage } from "../login/login";
+import { CourseDetailPage } from "../course-detail/course-detail";
 
 @Component({
   selector: 'page-courses',
@@ -36,8 +36,23 @@ export class CoursesPage {
             this.workshops = this._service.getWorkshops()
           }).then(() => {
             loader.dismiss();
+          }).catch(()=>{
+            loader.dismiss();
+            this._alertCtrl.create({
+              title: 'Erro com conexão',
+              subTitle: 'Verifique sua conexão e tente novamente!',
+              buttons: [{ text: 'Ok' }]
+            }).present()
+            .then(() =>{
+              this.navCtrl.push(LoginPage);          
+            });
+            
           });
         })
-  
-    }
+      }
+    
+  itemSelected(workshop: any){
+    this.navCtrl.push(CourseDetailPage, {workshopSelected : workshop});
+  }
+    
   }

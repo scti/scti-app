@@ -1,10 +1,9 @@
-<ion-header>
-  <ion-navbar class="header">
-      <ion-title><img src="http://scti.herokuapp.com/imgs/logo.png"></ion-title>
-  </ion-navbar>
+<ion-header class="header">
+      <ion-title><img src="../images/logo.png"></ion-title>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding overflow-scroll="false">
+
   <form (ngSubmit)="login()">
      <ion-item>
       <ion-label floating>Email</ion-label>
@@ -18,5 +17,5 @@
  
      <button ion-button block type="submit">ENTRAR</button>
    </form>
- 
- </ion-content>    
+
+</ion-content>    
